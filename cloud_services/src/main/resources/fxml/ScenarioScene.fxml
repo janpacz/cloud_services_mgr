@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <fx:include source="menu_bars/UserLoggedInMenuBar.fxml"/>
+        <AnchorPane>
+            <children>
+                <Label AnchorPane.leftAnchor="10" AnchorPane.topAnchor="5" fx:id="titleLabel"/>
+                <Label AnchorPane.leftAnchor="10" AnchorPane.topAnchor="35" text="Nazwa scenariusza:"/>
+                <TextField AnchorPane.leftAnchor="150" AnchorPane.topAnchor="30" prefWidth="330" fx:id="nameField"/>
+                <Button AnchorPane.leftAnchor="490" AnchorPane.topAnchor="30" prefWidth="200" text="Edytuj opis" onAction="#scenarioDescriptionButtonAction" />
+                <Label AnchorPane.leftAnchor="10" AnchorPane.topAnchor="70" text="Sortowanie" />
+                <ComboBox AnchorPane.leftAnchor="90" AnchorPane.topAnchor="65" fx:id="sortingComboBox"/>        
+                <Label AnchorPane.leftAnchor="10" AnchorPane.topAnchor="100" text="Zadania:" />
+                <ListView AnchorPane.leftAnchor="10" AnchorPane.topAnchor="120" prefWidth="150" prefHeight="150" fx:id="tasksListView" />
+                <Label AnchorPane.leftAnchor="10" AnchorPane.topAnchor="280" text="Zasoby:" />
+                <ListView AnchorPane.leftAnchor="10" AnchorPane.topAnchor="300" prefWidth="150" prefHeight="150" fx:id="resourcesListView" />
+                <Button AnchorPane.leftAnchor="10" AnchorPane.topAnchor="460" prefWidth="200" text="Wykonaj scenariusz" fx:id="executeScenarioButton" onAction="#executeScenarioButtonAction" />
+                <Button AnchorPane.leftAnchor="10" AnchorPane.topAnchor="500" prefWidth="200" text="Zapisz nowy scenariusz" fx:id="saveNewScenarioButton" onAction="#saveNewScenarioButtonAction" />
+                <Button AnchorPane.leftAnchor="10" AnchorPane.topAnchor="540" prefWidth="200" text="Zapisz zmiany" fx:id="saveChangesButton" onAction="#saveChangesButtonAction" />
+                <TextArea AnchorPane.leftAnchor="10" AnchorPane.topAnchor="580" prefRowCount="7" prefColumnCount="15" editable="false" fx:id="infoTextArea"/>
+                <Button AnchorPane.leftAnchor="170" AnchorPane.topAnchor="185" prefWidth="50" text="->" fx:id="chooseWorkflowObjectButton" onAction="#chooseWorkflowObjectButtonAction" />
+                <Canvas AnchorPane.leftAnchor="250" AnchorPane.topAnchor="100" fx:id="schemeCanvas" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="620.0" prefWidth="960.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="0" fx:id="titleLabel" /> 
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="35" text="Url" />
+                        <TextField AnchorPane.leftAnchor="30" AnchorPane.topAnchor="30" prefWidth="380" fx:id="urlField"/>
+
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="65" text="Parametry w adresie url kategorii:" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="90" prefWidth="250" prefHeight="150" fx:id="categoryParametersListView" />
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="65" text="Mapowanie nazwy parametru kategorii" />
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="85" text="na nazwę parametru zasobu:" />
+                        <TextField AnchorPane.leftAnchor="260" AnchorPane.topAnchor="110" prefWidth="250" fx:id="categoryParameterNameField"/>
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="140" prefWidth="250" text="Zapisz" fx:id="categoryParameterNameButton" onAction="#categoryParameterNameButtonAction"/>  
+
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="250" text="Parametry w adresie url zasobu:" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="275" prefWidth="250" prefHeight="255" fx:id="resourceParametersListView" />
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="250" text="Nazwa parametru zasobu:" />
+                        <TextField AnchorPane.leftAnchor="260" AnchorPane.topAnchor="275" prefWidth="250" fx:id="resourceParameterNameField"/>
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="305" prefWidth="250" text="Zapisz nazwę parametru" fx:id="resourceParameterNameButton" onAction="#resourceParameterNameButtonAction"/>  
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="335" fx:id="resourceCategoryParameterLabel" />
+                        <Label AnchorPane.leftAnchor="260" AnchorPane.topAnchor="360" text="Wartość parametru zasobu:" />
+                        <TextField AnchorPane.leftAnchor="260" AnchorPane.topAnchor="385" prefWidth="250" fx:id="resourceParameterValueField"/>
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="415" prefWidth="250" text="Zapisz wartość parametru" fx:id="resourceParameterValueButton" onAction="#resourceParameterValueButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="445" prefWidth="250" text="Przesuń w górę" fx:id="moveResourceParameterUpButton" onAction="#moveResourceParameterUpButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="475" prefWidth="250" text="Przesuń w dół" fx:id="moveResourceParameterDownButton" onAction="#moveResourceParameterDownButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="505" prefWidth="250" text="Usuń parametr" fx:id="removeResourceParameterButton" onAction="#removeResourceParameterButtonAction"/>  
+
+                        <Label AnchorPane.leftAnchor="520" AnchorPane.topAnchor="35" text="Wybierz technologię wykonania" />
+                        <ComboBox AnchorPane.leftAnchor="730" AnchorPane.topAnchor="30" prefWidth="200" fx:id="technologyComboBox"/>
+                        <Label AnchorPane.leftAnchor="520" AnchorPane.topAnchor="65" text="Przewidywany kod odpowiedzi:" />
+                        <TextField AnchorPane.leftAnchor="730" AnchorPane.topAnchor="60" prefWidth="200" fx:id="expectedResponseCodeField"/>
+                        <Label AnchorPane.leftAnchor="520" AnchorPane.topAnchor="95" text="Nazwa metody:" />
+                        <TextField AnchorPane.leftAnchor="730" AnchorPane.topAnchor="90" prefWidth="200" fx:id="methodNameField"/>
+                        <Label AnchorPane.leftAnchor="520" AnchorPane.topAnchor="125" text="Prefix przestrzeni nazw:" />
+                        <TextField AnchorPane.leftAnchor="730" AnchorPane.topAnchor="120" prefWidth="200" fx:id="namespacePrefixField"/>
+                        <Label AnchorPane.leftAnchor="520" AnchorPane.topAnchor="155" text="Uri przestrzeni nazw:" />
+                        <TextField AnchorPane.leftAnchor="730" AnchorPane.topAnchor="150" prefWidth="200" fx:id="namespaceUriField"/>
+
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="540" fx:id="communicateLabel"/>
+                        <Button AnchorPane.leftAnchor="255" AnchorPane.topAnchor="565" prefWidth="200" text="Zapisz" onAction="#saveTechnologyButtonAction"/>
+                        <Button AnchorPane.leftAnchor="465" AnchorPane.topAnchor="565" prefWidth="200" text="Zakończ" onAction="#closeButtonAction"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>

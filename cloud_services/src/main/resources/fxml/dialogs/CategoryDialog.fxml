@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="620.0" prefWidth="690.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="5" text="Nazwa" />
+                        <TextField AnchorPane.leftAnchor="50" AnchorPane.topAnchor="0" prefWidth="600" fx:id="nameField"/>
+                        <Label AnchorPane.leftAnchor="00" AnchorPane.topAnchor="35" text="Opis" />
+                        <TextArea AnchorPane.leftAnchor="50" AnchorPane.topAnchor="35" prefWidth="600" prefHeight="100" fx:id="descriptionTextArea"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="145" text="Parametry w adresie url" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="170" prefWidth="250" prefHeight="145" fx:id="urlParametersListView" />        
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="230" prefWidth="140" text="Przesuń w górę" fx:id="moveUrlParameterUpButton" onAction="#moveUrlParameterUpButtonAction"/>
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="265" prefWidth="140" text="Przesuń w dół" fx:id="moveUrlParameterDownButton" onAction="#moveUrlParameterDownButtonAction"/>
+                        <Label AnchorPane.leftAnchor="410" AnchorPane.topAnchor="145" text="Dodaj parametr w adresie url:" />
+                        <Label AnchorPane.leftAnchor="410" AnchorPane.topAnchor="170" text="Podaj nazwę parametru:" />
+                        <TextField AnchorPane.leftAnchor="410" AnchorPane.topAnchor="195" prefWidth="240" fx:id="urlParameterField"/>        
+                        <Button AnchorPane.leftAnchor="410" AnchorPane.topAnchor="230" prefWidth="240" text="Zapisz parametr w adresie url" fx:id="saveUrlParameterButton" onAction="#saveUrlParameterButtonAction"/>
+                        <Button AnchorPane.leftAnchor="410" AnchorPane.topAnchor="265" prefWidth="240" text="Usuń parametr w adresie url" fx:id="removeUrlParameterButton" onAction="#removeUrlParameterButtonAction"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="325" text="Parametry - pliki wejściowe" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="350" prefWidth="250" prefHeight="175" fx:id="inputFilesListView" />
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="395" prefWidth="140" text="Przesuń w górę" fx:id="moveInputFileParameterUpButton" onAction="#moveInputFileParameterUpButtonAction"/>
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="430" prefWidth="140" text="Przesuń w dół" fx:id="moveInputFileParameterDownButton" onAction="#moveInputFileParameterDownButtonAction"/>
+                        <Label AnchorPane.leftAnchor="410" AnchorPane.topAnchor="325" text="Dodaj parametr - plik wejściowy:" />
+                        <Label AnchorPane.leftAnchor="410" AnchorPane.topAnchor="350" text="Podaj nazwę parametru:" />
+                        <TextField AnchorPane.leftAnchor="410" AnchorPane.topAnchor="375" prefWidth="240" fx:id="inputFileParameterNameField"/>
+                        <Label AnchorPane.leftAnchor="410" AnchorPane.topAnchor="405" text="Podaj typ parametru:" />
+                        <ComboBox AnchorPane.leftAnchor="410" AnchorPane.topAnchor="430" prefWidth="240" fx:id="inputFileParameterTypeComboBox"/>
+                        <Button AnchorPane.leftAnchor="410" AnchorPane.topAnchor="465" prefWidth="240" text="Zapisz parametr - plik wejściowy" fx:id="saveInputFileParameterButton" onAction="#saveInputFileParameterButtonAction"/>
+                        <Button AnchorPane.leftAnchor="410" AnchorPane.topAnchor="500" prefWidth="240" text="Usuń parametr - plik wejściowy" fx:id="removeInputFileParameterButton" onAction="#removeInputFileParameterButtonAction"/>                
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="535" fx:id="communicateLabel" />
+                        <Button AnchorPane.leftAnchor="15" AnchorPane.topAnchor="560" prefWidth="200" text="Zapisz nową kategorię" onAction="#saveNewElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="225" AnchorPane.topAnchor="560" prefWidth="200" text="Zapisz zmiany w kategorii" fx:id="saveChangesInElementButton" onAction="#saveChangesInElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="435" AnchorPane.topAnchor="560" prefWidth="200" text="Zakończ" onAction="#closeButtonAction"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>
+
+
+

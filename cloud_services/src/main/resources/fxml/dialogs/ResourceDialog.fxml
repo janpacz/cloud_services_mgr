@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="610.0" prefWidth="610.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="5" text="Nazwa" />
+                        <TextField AnchorPane.leftAnchor="270" AnchorPane.topAnchor="0" prefWidth="300" fx:id="nameField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="40" text="Czas pojedynczej operacji" />
+                        <TextField AnchorPane.leftAnchor="270" AnchorPane.topAnchor="35" prefWidth="300" fx:id="timePerOperationField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="75" text="Koszt pojedynczej operacji" />
+                        <TextField AnchorPane.leftAnchor="270" AnchorPane.topAnchor="70" prefWidth="300" fx:id="costPerOperationField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="110" text="Czas wysłania jednostki danych" />
+                        <TextField AnchorPane.leftAnchor="270" AnchorPane.topAnchor="105" prefWidth="300" fx:id="timePerDataToSendUnitField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="145" text="Liczba zadań wykonywanych jednocześnie" />
+                        <TextField AnchorPane.leftAnchor="270" AnchorPane.topAnchor="140" prefWidth="300" fx:id="taskCapacityField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="180" text="Opis" />
+                        <TextArea AnchorPane.leftAnchor="270" AnchorPane.topAnchor="175" prefWidth="300" prefHeight="100" fx:id="descriptionTextArea"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="285" text="Kategorie zadań" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="310" prefWidth="200" prefHeight="100" fx:id="categoriesListView" />
+                        <TextArea AnchorPane.leftAnchor="0" AnchorPane.topAnchor="420" prefWidth="200" prefHeight="100" editable="false" fx:id="categoryInfoTextArea"/>
+                        <Button AnchorPane.leftAnchor="210" AnchorPane.topAnchor="310" prefWidth="200" text="Przesuń w górę" fx:id="moveCategoryUpButton" onAction="#moveCategoryUpButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="210" AnchorPane.topAnchor="340" prefWidth="200" text="Przesuń w dół" fx:id="moveCategoryDownButton" onAction="#moveCategoryDownButtonAction"/>   
+                        <Label AnchorPane.leftAnchor="210" AnchorPane.topAnchor="370" text="Technologia wykonania:" />
+                        <TextArea AnchorPane.leftAnchor="210" AnchorPane.topAnchor="395" prefWidth="200" prefHeight="125" editable="false" fx:id="technologyInfoTextArea"/>         
+                        <Button AnchorPane.leftAnchor="420" AnchorPane.topAnchor="310" prefWidth="150" text="Dodaj kategorię" onAction="#addCategoryButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="420" AnchorPane.topAnchor="340" prefWidth="150" text="Usuń kategorię" fx:id="removeCategoryButton" onAction="#removeCategoryButtonAction"/>  
+                        <Button AnchorPane.leftAnchor="420" AnchorPane.topAnchor="370" prefWidth="150" text="Edytuj technologię" fx:id="editTechnologyButton" onAction="#editTechnologyButtonAction"/> 
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="525" fx:id="communicateLabel"/>
+                        <Button AnchorPane.leftAnchor="10" AnchorPane.topAnchor="550" prefWidth="180" text="Zapisz nowy zasób" onAction="#saveNewElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="200" AnchorPane.topAnchor="550" prefWidth="180" text="Zapisz zmiany w zasobie" fx:id="saveChangesInElementButton" onAction="#saveChangesInElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="390" AnchorPane.topAnchor="550" prefWidth="180" text="Zakończ" onAction="#closeButtonAction"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>

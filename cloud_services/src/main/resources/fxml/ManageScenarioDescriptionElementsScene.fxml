@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <fx:include source="menu_bars/UserLoggedInMenuBar.fxml"/>
+        <StackPane>
+            <children>
+                <Group StackPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane>
+                            <children>   
+                                <Label AnchorPane.leftAnchor="180" AnchorPane.topAnchor="10" fx:id="titleLabel" /> 
+                                <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="30" fx:id="listTitleLabel" />
+                                <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="50" prefWidth="200" prefHeight="300" fx:id="elementsListView" />
+                                <TextArea AnchorPane.leftAnchor="0" AnchorPane.topAnchor="360" prefRowCount="8" prefColumnCount="15" editable="false" fx:id="infoTextArea"/>
+                                <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="520" fx:id="communicateLabel" />
+                                <Label AnchorPane.leftAnchor="230" AnchorPane.topAnchor="55" text="Sortowanie" />
+                                <ComboBox AnchorPane.leftAnchor="310" AnchorPane.topAnchor="50" fx:id="sortingComboBox"/>
+                                <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="90" prefWidth="250" text="Odśwież" fx:id="refreshButton" onAction="#refreshButtonAction"/>
+                                <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="130" prefWidth="250" fx:id="addElementButton" onAction="#addElementButtonAction"/>
+                                <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="170" prefWidth="250" fx:id="editOrCreateCopyButton" onAction="#editOrCreateCopyButtonAction"/>
+                                <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="210" prefWidth="250" fx:id="removeElementButton" onAction="#removeElementButtonAction"/>
+                                <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="250" prefWidth="250" text="Zarządzaj uprawnieniami" fx:id="setCredentialsButton" onAction="#setCredentialsButtonAction"/>                    
+                            </children>
+                        </AnchorPane> 
+                    </children>
+                </Group>
+            </children>
+        </StackPane>       
+    </children>
+</VBox>

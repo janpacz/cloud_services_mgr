@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefWidth="620.0" prefHeight="300.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="5" text="Wybierz algorytm"/>
+                        <ComboBox AnchorPane.leftAnchor="140" AnchorPane.topAnchor="0" fx:id="algorithmComboBox"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="45" text="Koszt maksymalny"/>
+                        <TextField AnchorPane.leftAnchor="250" AnchorPane.topAnchor="40" prefWidth="70" fx:id="maxCostTextField"/>
+                        <CheckBox AnchorPane.leftAnchor="330" AnchorPane.topAnchor="45" text="Uwzględnij limit kosztu" fx:id="checkMaxCostCheckBox"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="85" text="Wielkość populacji alg. genetycznego"/>
+                        <TextField AnchorPane.leftAnchor="250" AnchorPane.topAnchor="80" prefWidth="70" fx:id="populationSizeTextField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="125" text="Liczba iteracji alg. genetycznego"/>
+                        <TextField AnchorPane.leftAnchor="250" AnchorPane.topAnchor="120" prefWidth="70" fx:id="iterationsAmountTextField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="160" fx:id="elapsedTimeLabel"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="200" fx:id="scenarioCostLabel"/>
+                        <Button AnchorPane.leftAnchor="0" AnchorPane.topAnchor="240" prefWidth="190" text="Wykonaj scenariusz" fx:id="executeButton" onAction="#executeButtonAction"/>
+                        <Button AnchorPane.leftAnchor="200" AnchorPane.topAnchor="240" prefWidth="190" text="Przerwij scenariusz" fx:id="breakButton" onAction="#breakButtonAction"/>
+                        <Button AnchorPane.leftAnchor="400" AnchorPane.topAnchor="240" prefWidth="190" text="Zamknij" fx:id="closeButton" onAction="#closeButtonAction"/>       
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>

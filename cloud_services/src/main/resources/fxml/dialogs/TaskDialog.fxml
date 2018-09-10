@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="470.0" prefWidth="470.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="5" text="Nazwa" />
+                        <TextField AnchorPane.leftAnchor="60" AnchorPane.topAnchor="0" prefWidth="370" fx:id="nameField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="40" text="Rozmiar danych do wysłania" />
+                        <TextField AnchorPane.leftAnchor="210" AnchorPane.topAnchor="35" prefWidth="220" fx:id="dataSizeField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="75" text="Liczba operacji" />
+                        <TextField AnchorPane.leftAnchor="210" AnchorPane.topAnchor="70" prefWidth="220" fx:id="operationsAmountField"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="110" text="Opis" />
+                        <TextArea AnchorPane.leftAnchor="210" AnchorPane.topAnchor="105" prefWidth="220" prefHeight="100" fx:id="descriptionTextArea"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="215" text="Wybrana kategoria:" />
+                        <TextArea AnchorPane.leftAnchor="0" AnchorPane.topAnchor="240" prefWidth="200" prefHeight="100" editable="false" fx:id="categoryInfoTextArea"/>
+                        <Button AnchorPane.leftAnchor="210" AnchorPane.topAnchor="240" prefWidth="220" text="Wybierz kategorię" onAction="#chooseCategoryButtonAction"/>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="350" fx:id="communicateLabel" />
+                        <Button AnchorPane.leftAnchor="20" AnchorPane.topAnchor="375" prefWidth="200" text="Zapisz nowe zadanie" onAction="#saveNewElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="230" AnchorPane.topAnchor="375" prefWidth="200" text="Zapisz zmiany w zadaniu" fx:id="saveChangesInElementButton" onAction="#saveChangesInElementButtonAction"/>
+                        <Button AnchorPane.leftAnchor="125" AnchorPane.topAnchor="415" prefWidth="200" text="Zakończ" onAction="#closeButtonAction"/>          
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>

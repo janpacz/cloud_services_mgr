@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="300.0" prefWidth="620.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" text="Zadania poprzedzające" />
+                        <ListView AnchorPane.leftAnchor="0" AnchorPane.topAnchor="40" prefWidth="180" prefHeight="180" fx:id="precedingTasksListView" />
+                        <Label AnchorPane.leftAnchor="190" AnchorPane.topAnchor="0" text="Zadania kolejne" />
+                        <ListView AnchorPane.leftAnchor="190" AnchorPane.topAnchor="40" prefWidth="180" prefHeight="180" fx:id="followingTasksListView" />
+                        <TextArea AnchorPane.leftAnchor="380" AnchorPane.topAnchor="40" prefRowCount="8" prefColumnCount="13" editable="false" fx:id="infoTextArea"/>
+                        <Button AnchorPane.leftAnchor="380" AnchorPane.topAnchor="200" prefWidth="180" text="Usuń połączenie" fx:id="removeConnectionButton" onAction="#removeConnectionButtonAction" />
+                        <Button AnchorPane.leftAnchor="380" AnchorPane.topAnchor="240" prefWidth="180" text="Zamknij" onAction="#closeButtonAction" />  
+                    </children>
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>

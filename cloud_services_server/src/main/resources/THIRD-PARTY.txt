@@ -1,0 +1,9 @@
+
+Lists of 7 third-party dependencies.
+     (The Apache Software License, Version 2.0) JSON.simple (com.googlecode.json-simple:json-simple:1.1.1 - http://code.google.com/p/json-simple/)
+     (The Apache Software License, Version 2.0) HikariCP (com.zaxxer:HikariCP:3.1.0 - https://github.com/brettwooldridge/HikariCP)
+     (Common Public License Version 1.0) JUnit (junit:junit:4.10 - http://junit.org)
+     (BSD style) Hamcrest Core (org.hamcrest:hamcrest-core:1.1 - no url defined)
+     (BSD-2-Clause) PostgreSQL JDBC Driver - JDBC 4.2 (org.postgresql:postgresql:42.1.4 - https://github.com/pgjdbc/pgjdbc)
+     (MIT License) SLF4J API Module (org.slf4j:slf4j-api:1.7.25 - http://www.slf4j.org)
+     (MIT License) SLF4J JDK14 Binding (org.slf4j:slf4j-jdk14:1.7.25 - http://www.slf4j.org)

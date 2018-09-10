@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2018, Jan Pączkowski
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+  
+     Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+     Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="310.0" prefWidth="1030.0" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Group StackPane.alignment="CENTER">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="5" text="Wybierz parametr" />
+                        <ComboBox AnchorPane.leftAnchor="290" AnchorPane.topAnchor="0" fx:id="parameterNameComboBox"/>        
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="45" text="Wybierz źródło pliku wejściowego" />
+                        <ComboBox AnchorPane.leftAnchor="290" AnchorPane.topAnchor="40" fx:id="inputFileSourceComboBox"/>
+                        <Button AnchorPane.leftAnchor="0" AnchorPane.topAnchor="80" prefWidth="270" text="Wybierz plik/pliki wejściowe z dysku" fx:id="chooseFilesButton" onAction="#chooseFilesButtonAction" />
+                        <Label AnchorPane.leftAnchor="0" AnchorPane.topAnchor="125" text="Zadanie poprzedzające" />
+                        <ComboBox AnchorPane.leftAnchor="180" AnchorPane.topAnchor="120" fx:id="precedingTaskComboBox"/>  
+                        <Button AnchorPane.leftAnchor="0" AnchorPane.topAnchor="160" prefWidth="300" text="Dodaj zadanie poprzedzające do listy" fx:id="addPrecedingTaskToListButton" onAction="#addPrecedingTaskToListButtonAction" />
+                        <Button AnchorPane.leftAnchor="310" AnchorPane.topAnchor="160" prefWidth="140" text="Przesuń w górę" fx:id="moveFilesUpButton" onAction="#moveFilesUpButtonAction" />
+                        <Button AnchorPane.leftAnchor="460" AnchorPane.topAnchor="160" prefWidth="140" text="Przesuń w dół" fx:id="moveFilesDownButton" onAction="#moveFilesDownButtonAction" />
+                        <TextArea AnchorPane.leftAnchor="0" AnchorPane.topAnchor="200" prefHeight="30" prefWidth="600" editable="false" fx:id="chosenFileTextArea" />
+                        <Label AnchorPane.leftAnchor="620" AnchorPane.topAnchor="0" fx:id="parameterTypeLabel" />   
+                        <Label AnchorPane.leftAnchor="620" AnchorPane.topAnchor="40" text="Lista wybranych plików" />
+                        <ListView AnchorPane.leftAnchor="620" AnchorPane.topAnchor="60" prefWidth="380" prefHeight="180" fx:id="chosenFilesListView" />   
+                        <Button AnchorPane.leftAnchor="0" AnchorPane.topAnchor="250" prefWidth="250" text="Usuń plik/pliki" fx:id="removeFilesButton" onAction="#removeFilesButtonAction" /> 
+                        <Button AnchorPane.leftAnchor="260" AnchorPane.topAnchor="250" prefWidth="250" text="Zapisz zmiany plików wejściowych" fx:id="saveChangesButton" onAction="#saveChangesButtonAction" /> 
+                        <Button AnchorPane.leftAnchor="520" AnchorPane.topAnchor="250" prefWidth="250" text="Zamknij" onAction="#closeButtonAction" />
+                    </children>    
+                </AnchorPane>
+            </children>
+        </Group>  
+    </children>
+</StackPane>
