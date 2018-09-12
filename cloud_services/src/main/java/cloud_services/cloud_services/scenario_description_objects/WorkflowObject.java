@@ -30,10 +30,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+//element of workflow, can be task or resource
 public abstract class WorkflowObject extends ScenarioDescriptionElement {
-    protected int indexInScenario;
+    protected int indexInScenario; //index on scenario's tasks/resources list
+    //position on scenario screen
     protected int positionX;
     protected int positionY;
+    //size on scenario screen
     protected int sizeOnSchemeX;
     protected int sizeOnSchemeY;
 
@@ -90,6 +93,7 @@ public abstract class WorkflowObject extends ScenarioDescriptionElement {
         this.positionY = y;
     }
     
+    //draw object on scenario screen
     protected void draw(GraphicsContext gc, Color color, String text) {
         gc.setFill(Color.WHITE);
         gc.setStroke(color);

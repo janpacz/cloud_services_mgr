@@ -54,6 +54,9 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 
+//Dialog setting input files for task - input file can be chosen from disk (than it is represented by String path)
+//or can be output file of previous task (than it is represented by Integer index of previous task on previous tasks list).
+//If parameter is the list of input files, than it is represented by ArrayList of input files (Strings and Integers - see above).
 public class ChooseInputFilesDialog extends AskBeforeCloseDialog {
     @FXML private ComboBox parameterNameComboBox;    
     @FXML private ComboBox inputFileSourceComboBox;

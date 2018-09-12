@@ -33,8 +33,8 @@ public class WorkflowTaskCategory extends ScenarioDescriptionElement {
     private ArrayList<String> urlParameters;
     private LinkedHashMap<String, String> inputFilesInfos;
     
-    public static final String INPUT_FILE_TYPE_SINGLE = "Single";
-    public static final String INPUT_FILE_TYPE_MULTIPLE = "Multiple";
+    public static final String INPUT_FILE_TYPE_SINGLE = "Single"; //input file parameter - single file
+    public static final String INPUT_FILE_TYPE_MULTIPLE = "Multiple";//input file parameter - list of files
     
     public WorkflowTaskCategory(String owner, String name, ArrayList<String> urlParameters, 
             LinkedHashMap<String, String> inputFilesInfos) {

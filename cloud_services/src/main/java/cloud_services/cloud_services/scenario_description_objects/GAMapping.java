@@ -29,9 +29,10 @@ package cloud_services.cloud_services.scenario_description_objects;
 import cloud_services.cloud_services.working_window.dialogs.ExecuteScenarioDialog;
 import java.util.ArrayList;
 
+// mapping of tasks to resources - member of genetic algorithm population
 public class GAMapping {
-    private long time;
-    private int cost;
+    private long time; //expected time of execution of scenario using this mapping
+    private int cost; //expected cost of execution of scenario using this mapping
     private ArrayList<GATaskResourceAssingment> order;
     private ExecuteScenarioDialog dialog;
     

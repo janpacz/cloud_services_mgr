@@ -39,8 +39,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 
+//class that handles client requests applying to cloud services scenarios objects
 public abstract class CloudServicesRequestHandler implements HttpHandler {
-    private HikariDataSource dataSource;
+    private HikariDataSource dataSource; //connection pool
     protected ConcurrentHashMap<Long, Integer> resultsForEachThread;
     
     public CloudServicesRequestHandler(HikariDataSource dataSource) {
@@ -91,7 +92,7 @@ public abstract class CloudServicesRequestHandler implements HttpHandler {
         }
         resultsForEachThread.remove(Thread.currentThread().getId());
     }
-    
+    //method that executes request of autorized client
     protected abstract void executeHandler(JSONObject incomingJSONObject, Connection con) throws SQLException;
     
     protected void sendResponse(DataOutputStream dos) throws IOException { }

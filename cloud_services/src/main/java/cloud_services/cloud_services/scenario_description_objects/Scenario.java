@@ -29,6 +29,7 @@ package cloud_services.cloud_services.scenario_description_objects;
 import org.json.simple.JSONObject;
 
 public class Scenario extends ScenarioDescriptionElement {
+    // all elements of workflow in JSON structure which can be sent to server to store in DB
     private JSONObject workflowObjectsJSONObject;
     
     public Scenario(String owner, String name, JSONObject workflowObjectsJSONObject) {

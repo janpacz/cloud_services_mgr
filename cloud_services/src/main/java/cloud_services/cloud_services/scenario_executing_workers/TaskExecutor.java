@@ -67,6 +67,7 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 
+//class executes specified task on specified resource - prepares and sends web request and receives response
 public class TaskExecutor implements Runnable {
     private ExecuteScenarioDialog dialog;
     private Integer resourceIndex;

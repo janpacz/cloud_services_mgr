@@ -26,6 +26,7 @@
 
 package cloud_services.cloud_services.scenario_description_objects;
 
+//mapping of task to resource - member of whole scenario mapping which is member of genetic algorithm population
 public class GATaskResourceAssingment {
     private int taskIndex;
     private int resourceIndex;

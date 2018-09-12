@@ -39,6 +39,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Properties;
 
+//server main class - creates connection pool, DB tables if they not exist and sets up server
 public class CloudServicesServer {
 
     private static final String DATABASE_URL_PROPERTY = "database_url";

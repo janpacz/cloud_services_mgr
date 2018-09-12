@@ -39,10 +39,10 @@ public class WorkflowResource extends WorkflowObject {
     private long timePerOperation;
     private int costPerOperation;
     private long timePerDataToSendUnit;
-    private LinkedBlockingQueue<WorkflowTask> tasksToExecute;
-    private AtomicLongArray availabilityTimes;
-    private Semaphore capacityGuard;
-    private LinkedHashMap<String, TaskExecutionTechnology> categoriesNamesAndTechnologies;
+    private LinkedBlockingQueue<WorkflowTask> tasksToExecute; //tasks to be executed on this resource
+    private AtomicLongArray availabilityTimes; //times when each core will be available
+    private Semaphore capacityGuard; //checks whether number of tasks which are executed does not exceed maximum number allowed
+    private LinkedHashMap<String, TaskExecutionTechnology> categoriesNamesAndTechnologies; // categories available
 
     public WorkflowResource(String owner, String name, 
             long timePerOperation, int costPerOperation, long timePerDataToSendUnit, 
@@ -151,22 +151,27 @@ public class WorkflowResource extends WorkflowObject {
         capacityGuard.release(availabilityTimes.length());
     }
     
+    //task requests to be executed when in will not exceed maximum number of tasks executed at once 
     public void getExecutePermission() throws InterruptedException {
         capacityGuard.acquire();        
     }
     
+    //after task execution - another task execution may start
     public void releaseExecutePermission() {
         capacityGuard.release();
     }
     
+    //expected execution time of specified task on this resource
     public long getTaskExecutionTime(WorkflowTask task) {
         return timePerOperation * task.getOperationsAmount() + timePerDataToSendUnit * task.getDataToSendSize();
     }
     
+    //expected execution cost of specified task on this resource
     public int getTaskExecutionCost(WorkflowTask task) {
         return costPerOperation * task.getOperationsAmount();
     }
     
+    //finds core which would be available at the earliest
     private int getEarliestAvailabilityTimeIndex() {
         long minAvailabilityTime = availabilityTimes.get(0);
         int minAvailabilityTimeIndex = 0;
@@ -180,6 +185,9 @@ public class WorkflowResource extends WorkflowObject {
         return minAvailabilityTimeIndex;
     }
     
+    //gets time when execution of task not yet added to queue would be possible
+    //finds core where this time is earliest and returns this time
+    //or returns current time when resource is now iddle
     public long getAvailabilityTime() {
         long earliestAvailabilityTime = availabilityTimes.get(getEarliestAvailabilityTimeIndex());
         if(earliestAvailabilityTime < System.currentTimeMillis())
@@ -188,6 +196,7 @@ public class WorkflowResource extends WorkflowObject {
             return earliestAvailabilityTime;
     }
     
+    //when adding task to resource - updates availability time on core where it would be executed
     public void increaseAvailabilityTime(WorkflowTask task) {
         if(getAvailabilityTime() <= System.currentTimeMillis())
             availabilityTimes.set(getEarliestAvailabilityTimeIndex(), System.currentTimeMillis() + getTaskExecutionTime(task));

@@ -119,14 +119,17 @@ public final class Commons {
     public static final String RESOURCES_JSON_KEY = "resources";
     public static final String WORKFLOW_OBJECTS_JSON_KEY = "workflow_objects";
     
+    // result codes of server responses
     public static final int OPERATION_SUCCESSFULL = 0;
     public static final int USER_DOES_NOT_EXIST = 1;
     public static final int WRONG_PASSWORD = 2;
     public static final int SERVER_ERROR = -1;
     
+    //sorting orders
     public static final String SORTING_NAME_ASCENDING = "Według nazwy - rosnąco";
     public static final String SORTING_NAME_DESCENDING = "Według nazwy - malejąco";
     
+    //comparator used for elements which order is stored in DB 
     public static Comparator<JSONObject> orderJSONKeyComparator = new Comparator<JSONObject>() {
         @Override
         public int compare(JSONObject o1, JSONObject o2) {
@@ -136,6 +139,7 @@ public final class Commons {
         }
     };
     
+    //sorting elements by name
     public static void sortElements(String sorting, List<? extends ScenarioDescriptionElement> elementsList) {
         Comparator<ScenarioDescriptionElement> comparator;
         if(sorting.equals(SORTING_NAME_ASCENDING) || sorting.equals(SORTING_NAME_DESCENDING)) {
@@ -418,6 +422,7 @@ public final class Commons {
         return scenariosArrayList;
     }
     
+    //gets category's index in list given category's name and order
     public static int getCategoryIndex(ArrayList<WorkflowTaskCategory> categoriesList, String nameAndOwner) {
         for(int i=0; i<categoriesList.size(); i++) {
             if(categoriesList.get(i).getNameAndOwner().equals(nameAndOwner))

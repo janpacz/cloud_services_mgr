@@ -78,7 +78,7 @@ public final class Commons {
     public static final String USERS_SEARCH_STRING = "users_search_string";
     
     public static final String WORKFLOW_OBJECTS_JSON_KEY = "workflow_objects";
-    
+    //statuses of response to client
     public static final int OPERATION_SUCCESSFULL = 0;
     public static final int USER_DOES_NOT_EXIST = 1;
     public static final int WRONG_PASSWORD = 2;

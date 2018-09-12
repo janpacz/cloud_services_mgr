@@ -81,24 +81,25 @@ import javafx.stage.Modality;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+//Controller responsible for scenario edition and start of execution
 public class ScenarioController implements Initializable {
     @FXML private Label titleLabel;
     @FXML private TextField nameField;
     @FXML private ComboBox sortingComboBox;
-    @FXML private ListView tasksListView;
-    @FXML private ListView resourcesListView;
-    private ObservableList<WorkflowTask> tasksList;
-    private ObservableList<WorkflowResource> resourcesList;
+    @FXML private ListView tasksListView; 
+    @FXML private ListView resourcesListView; 
+    private ObservableList<WorkflowTask> tasksList; //all tasks retrieved from DB
+    private ObservableList<WorkflowResource> resourcesList; //all resources retrieved from DB
     @FXML private Button executeScenarioButton;
     @FXML private Button saveNewScenarioButton;
     @FXML private Button saveChangesButton;
     @FXML private TextArea infoTextArea;
     @FXML private Button chooseWorkflowObjectButton;
     @FXML private Canvas schemeCanvas;
-    private ArrayList<WorkflowTask> scenarioTasksList;
-    private ArrayList<WorkflowResource> scenarioResourcesList;
-    private ArrayList<DrawingOrderInformation> scenarioDrawingOrderList;
-    private WorkflowObject movingObject = null;
+    private ArrayList<WorkflowTask> scenarioTasksList; //tasks added to scenario
+    private ArrayList<WorkflowResource> scenarioResourcesList; //resources added to scenario
+    private ArrayList<DrawingOrderInformation> scenarioDrawingOrderList; //order of drawing of scenario objects
+    private WorkflowObject movingObject = null; //object currently moved by mouse
     private int beginningConnectionTaskIndex = -1;
     private boolean connectionToPrecedingTask;
     private int previousMousePositionX;
@@ -246,7 +247,8 @@ public class ScenarioController implements Initializable {
         scenarioPreviousName = nameField.getText().trim();
         saveChangesButton.setDisable(false);
     }
-     
+    
+    //gets workflow object's index in list given workflow object's name and order
     private int getWorkflowObjectIndex(List<? extends WorkflowObject> workflowObjectsList, String nameAndOwner) {
         for(int i=0; i<workflowObjectsList.size(); i++) {
             if(workflowObjectsList.get(i).getNameAndOwner().equals(nameAndOwner))
@@ -265,6 +267,7 @@ public class ScenarioController implements Initializable {
                 scenarioDescription = "";
             else
                 scenarioDescription = scenario.getDescription();
+            //set scene for scenario got from DB
             JSONObject workflowObjectsJSONObject = scenario.getWorkflowObjectsJSONObject();
             ArrayList<String> tasksNotHavingCredentialsToNamesAndOwners = new ArrayList<>();
             ArrayList<String> resourcesNotHavingCredentialsToNamesAndOwners = new ArrayList<>();

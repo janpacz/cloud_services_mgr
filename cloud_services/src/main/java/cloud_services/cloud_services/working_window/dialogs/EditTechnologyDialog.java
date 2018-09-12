@@ -54,16 +54,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+//Dialog setting execution technology  of tasks of specified category on specified resource
 public class EditTechnologyDialog extends AskBeforeCloseDialog {
     @FXML private Label titleLabel;
     @FXML private TextField urlField;
     
+    //controls responsible for list of url parameters specified by category
     private ObservableList<String> categoryParametersList;
     private LinkedHashMap<String,String> categoryResourceParametersMap;
     @FXML private ListView categoryParametersListView;
     @FXML private TextField categoryParameterNameField;
     @FXML private Button categoryParameterNameButton;
     
+    //controls responsible for list of url parameters specified by resource service
     private ObservableList<String> resourceParametersNamesList;
     private ArrayList<ResourceUrlParameter> resourceParametersValuesList;
     @FXML private ListView resourceParametersListView;
@@ -76,7 +79,7 @@ public class EditTechnologyDialog extends AskBeforeCloseDialog {
     @FXML private Button moveResourceParameterDownButton;
     @FXML private Button removeResourceParameterButton;
     
-    @FXML private ComboBox technologyComboBox;
+    @FXML private ComboBox technologyComboBox; // REST/SOAP choise
     @FXML private TextField expectedResponseCodeField;
     @FXML private TextField methodNameField;
     @FXML private TextField namespacePrefixField;

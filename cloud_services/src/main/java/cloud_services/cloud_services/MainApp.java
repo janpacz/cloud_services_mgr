@@ -40,8 +40,10 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     
+    //current user of application and it's password
     private static String currentUser="";
     private static String currentPassword="";
+    
     private static String serverUrl="";
     private static final String SERVER_URL_PROPERTY = "server_url";
     

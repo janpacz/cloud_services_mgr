@@ -62,6 +62,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.WindowEvent;
 
+//Dialog responsible for sceanrio execution
 public class ExecuteScenarioDialog extends ApplicationDialog {
     @FXML private ComboBox algorithmComboBox;
     @FXML private TextField maxCostTextField;
@@ -76,14 +77,14 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
     private ScenarioController scenarioController;
     private ArrayList<WorkflowTask> scenarioTasksList;
     private ArrayList<WorkflowResource> scenarioResourcesList;
-    private AtomicIntegerArray notExecutedPrecedingTasksAmounts;
+    private AtomicIntegerArray notExecutedPrecedingTasksAmounts; //amounts of not executed preceding tasks for each task
     private Semaphore readyNotScheduledOrFailedTasksWaiting;
     private LinkedBlockingQueue<WorkflowTask> readyNotScheduledTasks;
     private LinkedBlockingQueue<Integer> resourcesToExecuteOnOrFailedTasks;
     private ExecutorService executors;
     private ScenarioScheduler scenarioScheduler;
     private ScenarioExecutor scenarioExecutor;
-    
+    //fields useed in genetic algorithm
     private ArrayList<GAMapping> geneticAlgorithmPopulation;
     private GAMapping bestMapping;
     private ArrayList<Integer> readyNotScheduledTasksGA;
@@ -471,7 +472,8 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
     public WorkflowResource getResource(int resourceIndex) {
         return scenarioResourcesList.get(resourceIndex);
     }
-        
+    
+    //after task execution this method is executed for each following task    
     public void tryRunFollowingTask(int followingTaskIndex) {
         if(notExecutedPrecedingTasksAmounts.decrementAndGet(followingTaskIndex) == 0) {
             readyNotScheduledTasks.add(scenarioTasksList.get(followingTaskIndex));
@@ -502,6 +504,7 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
         drawLaterSchemeCanvas();
     }
     
+    //reduce cost by subtracting tasks already in execution after execution fail or break by user
     public void reduceCost(WorkflowTask task) {
         WorkflowResource resource = scenarioResourcesList.get(task.getResourceIndex());
         scenarioScheduler.reduceCost(resource.getTaskExecutionCost(task));

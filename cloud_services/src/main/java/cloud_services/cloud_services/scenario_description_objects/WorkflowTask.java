@@ -44,10 +44,10 @@ public class WorkflowTask extends WorkflowObject{
     private int executionState;
     private ArrayList<Integer> precedingTasks; 
     private ArrayList<Integer> followingTasks;
-    private int resourceIndex;
-    private LinkedHashMap<String, String> urlParameters;
-    private LinkedHashMap<String, Object> inputFilesInfos;
-    private int indexWithSameNameInScenario;
+    private int resourceIndex; //index in scenario of resource where task is or will be executed
+    private LinkedHashMap<String, String> urlParameters; //parameters at url address and their values
+    private LinkedHashMap<String, Object> inputFilesInfos; //input file parameters and their values
+    private int indexWithSameNameInScenario; //number of task within tasks with the same name
     private TreeMap<Integer, String> precedingTasksThatFailed;
     
     public static final int TASK_NOT_EXECUTED = 0;
@@ -321,6 +321,7 @@ public class WorkflowTask extends WorkflowObject{
             return getNameWithIndexWithSameNameInScenario();
     }
     
+    // get task color on scenario screen
     public Color getTaskColor() {
         switch(executionState)
         {

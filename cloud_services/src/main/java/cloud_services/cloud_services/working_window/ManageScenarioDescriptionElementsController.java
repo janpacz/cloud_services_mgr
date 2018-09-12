@@ -133,11 +133,13 @@ public abstract class ManageScenarioDescriptionElementsController implements Ini
     protected abstract void setGUITexts();
     protected abstract void getDataFromServer();
     
+    //method adds elements got from server to GUI and sets GUI accordingly
     protected void setGUIAndElementsGotFromServer() {
         elementsList.addAll(elementsFromDBList);
         Commons.sortElements((String)sortingComboBox.getValue(), elementsList);
     }
     
+    //method sets GUI according to whether current user is owner of currently selected element
     private void setGUIIsElementOwner(boolean isElementOwner) {
         removeElementButton.setDisable(!isElementOwner);
         setCredentialsButton.setDisable(!isElementOwner);
