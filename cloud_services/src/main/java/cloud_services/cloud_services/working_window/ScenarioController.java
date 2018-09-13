@@ -95,9 +95,9 @@ public class ScenarioController implements Initializable {
     @FXML private Button saveChangesButton;
     @FXML private TextArea infoTextArea;
     @FXML private Button chooseWorkflowObjectButton;
-    @FXML private Canvas schemeCanvas;
-    private ArrayList<WorkflowTask> scenarioTasksList; //tasks added to scenario
-    private ArrayList<WorkflowResource> scenarioResourcesList; //resources added to scenario
+    @FXML private Canvas schemeCanvas; // canvas where scenario is drawn
+    private ArrayList<WorkflowTask> scenarioTasksList; //tasks belonging to scenario
+    private ArrayList<WorkflowResource> scenarioResourcesList; //resources belonging to scenario
     private ArrayList<DrawingOrderInformation> scenarioDrawingOrderList; //order of drawing of scenario objects
     private WorkflowObject movingObject = null; //object currently moved by mouse
     private int beginningConnectionTaskIndex = -1;
@@ -107,7 +107,7 @@ public class ScenarioController implements Initializable {
     private ContextMenu taskContextMenu;
     private ContextMenu resourceContextMenu;
     private ChangeListener<Number> sceneSizeListener;
-    private HashMap<String, Integer> sameNamesInScenario;
+    private HashMap<String, Integer> sameNamesInScenario; //number of tasks with the same name and owner in scenario
     
     private Scenario scenario;
     private String scenarioPreviousName;
@@ -545,6 +545,7 @@ public class ScenarioController implements Initializable {
             resourceContextMenu.hide();
         WorkflowObject chosenObject = null;
         WorkflowObject workflowObject;
+        //currently clicked object will be now drawn last (on top)
         for(int i=scenarioDrawingOrderList.size()-1; i>=0; i--) {
             if(scenarioDrawingOrderList.get(i).getType().equals(DrawingOrderInformation.TASK)) {
                 workflowObject = scenarioTasksList.get(scenarioDrawingOrderList.get(i).getIndexInScenario());
@@ -568,21 +569,25 @@ public class ScenarioController implements Initializable {
         if(chosenObject != null) {
             infoTextArea.setText(chosenObject.info());
             if(event.getButton()==MouseButton.PRIMARY) {
+                //left mouse button - start of object's movement
                 movingObject = chosenObject;              
                 previousMousePositionX = (int) event.getX();
                 previousMousePositionY = (int) event.getY();                
             }
             if(chosenObject.getClass().getSimpleName().equals("WorkflowResource")) {
                 if(event.getButton()==MouseButton.SECONDARY) {
+                    //right mouse button - show context menu
                     showResourceContextMenu(event, (WorkflowResource) chosenObject);
                 }
             } else {
                 WorkflowTask chosenTask = (WorkflowTask) chosenObject;
                 if(event.getButton()==MouseButton.SECONDARY) {
+                    //right mouse button - show context menu
                     showTaskContextMenu(event, chosenTask);
                 }
                 
                 if(beginningConnectionTaskIndex != -1 && beginningConnectionTaskIndex != chosenTask.getIndexInScenario()) {
+                    //new task connection establishment
                     if(connectionToPrecedingTask) {
                         scenarioTasksList.get(beginningConnectionTaskIndex).addPrecedingTask(chosenTask.getIndexInScenario());
                         chosenTask.addFollowingTask(beginningConnectionTaskIndex);
@@ -600,6 +605,7 @@ public class ScenarioController implements Initializable {
     
     private void schemePaneMouseDragged(MouseEvent event) {
         if(movingObject != null) {
+            //object's movment if mouse button is pressed
             int mouseMovementX = (int)event.getX() - previousMousePositionX;
             int mouseMovementY = (int)event.getY() - previousMousePositionY;
             int newResourcePositionX = movingObject.getPositionX() + mouseMovementX;
@@ -616,12 +622,14 @@ public class ScenarioController implements Initializable {
     
     private void schemePaneMouseReleased(MouseEvent event) {
         if(event.getButton()==MouseButton.PRIMARY) {
+            //stop of object's movement
             movingObject = null;             
         }
     }
     
     private void schemePaneMouseMoved(MouseEvent event) {
         if(beginningConnectionTaskIndex != -1) {
+            //tasks connection drawing
             previousMousePositionX = (int)event.getX();
             previousMousePositionY = (int)event.getY();
             drawSchemeCanvas();
@@ -895,6 +903,7 @@ public class ScenarioController implements Initializable {
         dialog.showAndWait();
     }
     
+    //method draws cannection while it is created, second task not yet chosen
     private void drawTaskArrow(int taskIndex)
     {
         GraphicsContext gc = schemeCanvas.getGraphicsContext2D();
@@ -916,6 +925,7 @@ public class ScenarioController implements Initializable {
         }
     }
     
+    //method draws established connection between two tasks
     private void drawTaskArrow(int taskIndex1, int taskIndex2)
     {        
         WorkflowTask task1 = scenarioTasksList.get(taskIndex1);
@@ -928,6 +938,7 @@ public class ScenarioController implements Initializable {
                 task2.getLeftMiddlePointY());
     }
     
+    //method draws assingment of task to resource during scenario execution
     private void drawTaskResourceArrow(int taskIndex, int resourceIndex)
     {
         WorkflowTask task = scenarioTasksList.get(taskIndex);

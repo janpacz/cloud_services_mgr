@@ -26,7 +26,7 @@
 
 package cloud_services.cloud_services.scenario_description_objects;
 
-//object used to describe scenario or part of it, can be scenario, resource, task or task category
+//class of objects used to describe scenario or part of it, can be scenario, resource, task or task category
 public abstract class ScenarioDescriptionElement {    
     protected String owner;
     protected String name;

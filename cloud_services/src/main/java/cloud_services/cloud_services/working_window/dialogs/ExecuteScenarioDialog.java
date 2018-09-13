@@ -77,6 +77,7 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
     private ScenarioController scenarioController;
     private ArrayList<WorkflowTask> scenarioTasksList;
     private ArrayList<WorkflowResource> scenarioResourcesList;
+    //fields used for concurrent scenario scheduling and execution
     private AtomicIntegerArray notExecutedPrecedingTasksAmounts; //amounts of not executed preceding tasks for each task
     private Semaphore readyNotScheduledOrFailedTasksWaiting;
     private LinkedBlockingQueue<WorkflowTask> readyNotScheduledTasks;
@@ -135,6 +136,7 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
         
         breakButton.setDisable(true);
         
+        //disabled window closing differently then by close button
         this.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent we) {
@@ -473,7 +475,7 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
         return scenarioResourcesList.get(resourceIndex);
     }
     
-    //after task execution this method is executed for each following task    
+    //after successfull task execution this method is executed for each following task    
     public void tryRunFollowingTask(int followingTaskIndex) {
         if(notExecutedPrecedingTasksAmounts.decrementAndGet(followingTaskIndex) == 0) {
             readyNotScheduledTasks.add(scenarioTasksList.get(followingTaskIndex));
@@ -504,7 +506,7 @@ public class ExecuteScenarioDialog extends ApplicationDialog {
         drawLaterSchemeCanvas();
     }
     
-    //reduce cost by subtracting tasks already in execution after execution fail or break by user
+    //reduce cost by subtracting cost of tasks already scheduled after execution has failed or is broken by user
     public void reduceCost(WorkflowTask task) {
         WorkflowResource resource = scenarioResourcesList.get(task.getResourceIndex());
         scenarioScheduler.reduceCost(resource.getTaskExecutionCost(task));

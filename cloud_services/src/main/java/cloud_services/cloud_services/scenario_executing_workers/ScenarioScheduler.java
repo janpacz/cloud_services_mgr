@@ -35,9 +35,11 @@ import java.util.concurrent.Semaphore;
 public abstract class ScenarioScheduler implements Runnable {
     protected ExecuteScenarioDialog dialog;
     protected int tasksAmount;
+    //fields used for concurrent scenario scheduling and execution
     protected Semaphore readyNotScheduledOrFailedTasksWaiting;
     protected LinkedBlockingQueue<WorkflowTask> readyNotScheduledTasks;
-    protected LinkedBlockingQueue<Integer> resourcesToExecuteOnOrFailedTasks;    
+    protected LinkedBlockingQueue<Integer> resourcesToExecuteOnOrFailedTasks;
+    
     protected int scenarioCost;
     protected WorkflowTask taskToSchedule;
     protected WorkflowResource resourceToSchedule;

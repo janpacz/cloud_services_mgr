@@ -26,7 +26,7 @@
 
 package cloud_services.cloud_services.scenario_description_objects;
 
-// class representing parameter added to url address of service published on resource
+// class of objects representing parameters added to url address of service published on resource
 public class ResourceUrlParameter {
     private String type; // type of parameter - whether it is expected by task category or by service itself
     private String value; // name of task category parameter or value of resource service parameter

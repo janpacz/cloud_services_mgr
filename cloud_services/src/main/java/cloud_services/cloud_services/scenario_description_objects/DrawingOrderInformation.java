@@ -26,7 +26,7 @@
 
 package cloud_services.cloud_services.scenario_description_objects;
 
-// class contining information about order of drawing objects while drawing workflow
+// class of objects contining information about order of drawing objects while drawing workflow
 public class DrawingOrderInformation {   
     private String type; // type of workflow object - task or resource
     private int indexInScenario; //index in scenario's tasks/resources list

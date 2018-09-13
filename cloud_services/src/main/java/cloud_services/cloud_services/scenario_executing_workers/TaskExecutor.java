@@ -67,7 +67,7 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 
-//class executes specified task on specified resource - prepares and sends web request and receives response
+//object that executes specified task on specified resource - prepares and sends web request and receives response
 public class TaskExecutor implements Runnable {
     private ExecuteScenarioDialog dialog;
     private Integer resourceIndex;
@@ -86,7 +86,7 @@ public class TaskExecutor implements Runnable {
         boolean previousExecutionCorrect = true;
         WorkflowResource resource = dialog.getResource(resourceIndex);
         try {            
-            resource.getExecutePermission();
+            resource.getExecutePermission(); //wait until resource is available
             WorkflowTask task = resource.getTaskToExecute();            
             dialog.setTaskExecutionState(task.getIndexInScenario(), WorkflowTask.TASK_IN_EXECUTION);
             WorkflowTaskCategory category = task.getCategory();
@@ -95,13 +95,16 @@ public class TaskExecutor implements Runnable {
             LinkedHashMap<String, String> urlParameters = task.getUrlParametersCopy();
             LinkedHashMap<String, ResourceUrlParameter> urlParametersNamesAndOrder = technology.getUrlParametersNamesAndOrder();
             if(!urlParametersNamesAndOrder.isEmpty()) {
+                //url parameters addad to url addrsss
                 urlString += "?";
                 for(String urlParameter : urlParametersNamesAndOrder.keySet()) {
                     ResourceUrlParameter resourceUrlParameter = urlParametersNamesAndOrder.get(urlParameter);
                     if(resourceUrlParameter.getType().equals(ResourceUrlParameter.RESOURCE)) {
+                        //url parameters expected by resource service
                         urlString += urlParameter + "=" 
                             + resourceUrlParameter.getValue() + "&";
                     } else {
+                        //url parameters expected by category
                         urlString += urlParameter + "=" 
                             + urlParameters.get(resourceUrlParameter.getValue()) + "&";
                     }
@@ -148,6 +151,7 @@ public class TaskExecutor implements Runnable {
                                 }
                             }
                         } else {
+                            //input files added
                             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
                             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
                             LinkedHashMap<String, Object> inputFilesInfos = task.getInputFilesInfosCopy();
@@ -200,7 +204,8 @@ public class TaskExecutor implements Runnable {
                                 }                            
                             }
                         }
-                        if(previousExecutionCorrect) {                                                    
+                        if(previousExecutionCorrect) {
+                            //save output file
                             int readedByte;                
                             try (InputStream is = httpConnection.getInputStream();
                                     FileOutputStream fos = new FileOutputStream(outputFile)) {
@@ -225,6 +230,7 @@ public class TaskExecutor implements Runnable {
                         SOAPBodyElement element = soapBody.addBodyElement(soapEnvelope.createName(soapTechnology.getMethodName(), soapTechnology.getNamespacePrefix(), soapTechnology.getNamespaceUri()));
                         LinkedHashMap<String, Object> inputFilesInfos = task.getInputFilesInfosCopy();
                         for(String inputFileParameter : inputFilesInfos.keySet()) {
+                            //input files added
                             File inputFile;
                             if(executionBroken) {
                                 previousExecutionCorrect = false;
@@ -303,6 +309,7 @@ public class TaskExecutor implements Runnable {
                                             dialog,
                                             true);
                                 } else {
+                                    //save output file
                                     Iterator soapBodyIterator = responseSoapBody.getChildElements();
                                     SOAPBodyElement methodResponseElement = (SOAPBodyElement) soapBodyIterator.next();
                                     Iterator methodResponseIterator = methodResponseElement.getChildElements();
@@ -344,11 +351,13 @@ public class TaskExecutor implements Runnable {
                                     dialog,
                                     true);
             }
-            resource.releaseExecutePermission();
-            if(executionBroken && task.getExecutionState() == WorkflowTask.TASK_IN_EXECUTION) {            
+            resource.releaseExecutePermission(); //let resource know that it can accept another task            
+            if(executionBroken && task.getExecutionState() == WorkflowTask.TASK_IN_EXECUTION) { 
+                //execution was successfull but broken by user
                 dialog.reduceCost(task);
                 dialog.setTaskExecutionState(task.getIndexInScenario(), WorkflowTask.TASK_NOT_EXECUTED);
             } else if(previousExecutionCorrect) {
+                //execution successfull
                 dialog.setTaskExecutionState(task.getIndexInScenario(), WorkflowTask.TASK_EXECUTED);
                 for(int followingTaskIndex : task.getFollowingTasksArray()) {
                     dialog.tryRunFollowingTask(followingTaskIndex);
@@ -369,6 +378,8 @@ public class TaskExecutor implements Runnable {
         }
     }
     
+    //maps tasks's inputFileInfo object (String file path or Integer index of preceding task 
+    //(which output file is taken) on preceding tasks list) to File
     private File getInputFileFromInputFileInfo(Object inputFileInfo, String inputFileParameter, WorkflowTask task) {
         File inputFile;
         if(inputFileInfo instanceof Integer) {

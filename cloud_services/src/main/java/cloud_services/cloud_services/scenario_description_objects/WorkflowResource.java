@@ -151,12 +151,12 @@ public class WorkflowResource extends WorkflowObject {
         capacityGuard.release(availabilityTimes.length());
     }
     
-    //task requests to be executed when in will not exceed maximum number of tasks executed at once 
+    //method for task to request to be executed when in will not exceed maximum number of tasks executed at once 
     public void getExecutePermission() throws InterruptedException {
         capacityGuard.acquire();        
     }
     
-    //after task execution - another task execution may start
+    //method used by task after its execution - another task execution may start
     public void releaseExecutePermission() {
         capacityGuard.release();
     }
@@ -187,7 +187,7 @@ public class WorkflowResource extends WorkflowObject {
     
     //gets time when execution of task not yet added to queue would be possible
     //finds core where this time is earliest and returns this time
-    //or returns current time when resource is now iddle
+    //or returns current time when resource is iddle at the moment of method execution
     public long getAvailabilityTime() {
         long earliestAvailabilityTime = availabilityTimes.get(getEarliestAvailabilityTimeIndex());
         if(earliestAvailabilityTime < System.currentTimeMillis())
@@ -196,7 +196,7 @@ public class WorkflowResource extends WorkflowObject {
             return earliestAvailabilityTime;
     }
     
-    //when adding task to resource - updates availability time on core where it would be executed
+    //when adding task to resource - updates availability time on core where task will be executed
     public void increaseAvailabilityTime(WorkflowTask task) {
         if(getAvailabilityTime() <= System.currentTimeMillis())
             availabilityTimes.set(getEarliestAvailabilityTimeIndex(), System.currentTimeMillis() + getTaskExecutionTime(task));

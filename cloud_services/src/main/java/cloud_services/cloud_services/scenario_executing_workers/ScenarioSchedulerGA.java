@@ -33,7 +33,7 @@ import cloud_services.cloud_services.working_window.dialogs.ExecuteScenarioDialo
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
 
-//class scheduling scenario according to mapping chosen previously by genetic algorithm
+//object that schedules scenario according to mapping chosen previously by genetic algorithm
 public class ScenarioSchedulerGA extends ScenarioScheduler {
     private GAMapping mapping; // task resources mapping chosen previously by genetic algorithm
 

@@ -77,7 +77,6 @@ public class MainApp extends Application {
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoggingScene.fxml"));
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("Cloud Services");
         stage.setWidth(720);

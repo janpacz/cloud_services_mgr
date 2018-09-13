@@ -37,7 +37,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-//class scheduling scenario using heuristic algorithms
+//object that schedules scenario using heuristic algorithms
 public class ScenarioSchedulerHeuristic extends ScenarioScheduler {
     private String algorithm;
     private ExecutorService executors;
@@ -45,9 +45,9 @@ public class ScenarioSchedulerHeuristic extends ScenarioScheduler {
     private int resourceToScheduleIndex;   
     private long bestExecutionTime; //best execution time among all task/resource pairs
     private Semaphore findBestExecutionTimeAreaLock; 
-    private int maxCost;
+    private int maxCost; //scenario max cost
     private LinkedBlockingQueue<WorkflowTask> maxCostExceedingTasks;
-    private ConcurrentHashMap<Integer, Integer> myopicResourceForEachTask;
+    private ConcurrentHashMap<Integer, Integer> myopicResourceForEachTask; //map used in MYOPIC algorithm to randomly choose task/resource pair
     
     public ScenarioSchedulerHeuristic(
              ExecuteScenarioDialog dialog,               
@@ -122,6 +122,7 @@ public class ScenarioSchedulerHeuristic extends ScenarioScheduler {
     }
 
     //method used by ResourceToExecuteFinder - for MIN_MIN and MAX_MIN algorithm chooses best task/resource pair
+    //according to each algorithm
     public void findTaskAndResourcetoSchedule(int taskIndex, int resourceIndex) throws InterruptedException {
         WorkflowResource resource = dialog.getResource(resourceIndex);
         WorkflowTask task = dialog.getTask(taskIndex);

@@ -28,7 +28,7 @@ package cloud_services.cloud_services.scenario_description_objects;
 
 import java.util.LinkedHashMap;
 
-//class representing technology of executing tasks of specified category on resource
+//class of objects representing technologies of executing tasks of specified category on resource
 public abstract class TaskExecutionTechnology {
     private String url;
     //parameters added to url of service executing tasks of considered category on resource

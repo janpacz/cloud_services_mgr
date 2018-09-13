@@ -53,9 +53,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+//dialog to set credentials for category, task, resource and scenario
 public class SetCredentialsDialog extends AskBeforeCloseDialog {
-    private ArrayList<String> usersWithCredentialsInDBList;
-    private ObservableList<String> usersWithCredentialsList;
+    private ArrayList<String> usersWithCredentialsInDBList; //state retrieved from DB
+    private ObservableList<String> usersWithCredentialsList; //state to be written into DB
     @FXML private ListView usersWithCredentialsListView;
     @FXML private Button addCredentialsButton;
     @FXML private Button moveUserUpButton;
@@ -66,7 +67,7 @@ public class SetCredentialsDialog extends AskBeforeCloseDialog {
     private ObservableList<String> searchUsersWithoutCredentialsList;
     @FXML private ListView searchUsersWithoutCredentialsListView;
     private ObservableList<String> usersWithCredentialsBeingRemovedList;
-    @FXML private ListView usersWithCredentialsBeingRemovedListView;
+    @FXML private ListView usersWithCredentialsBeingRemovedListView; //state to be written into DB
     @FXML private Label communicateLabel;
     
     private ScenarioDescriptionElement scenarioDescriptionElement;

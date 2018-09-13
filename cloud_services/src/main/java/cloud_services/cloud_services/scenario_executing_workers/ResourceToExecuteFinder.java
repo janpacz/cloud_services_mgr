@@ -30,7 +30,7 @@ import cloud_services.cloud_services.scenario_description_objects.WorkflowResour
 import cloud_services.cloud_services.scenario_description_objects.WorkflowTask;
 import java.util.concurrent.LinkedBlockingQueue;
 
-//class responsible for finding best resource for specified task
+//class of objects responsible for finding best resource for specified task
 public class ResourceToExecuteFinder implements Runnable {
     private ScenarioSchedulerHeuristic scheduler;
     private WorkflowTask task;
